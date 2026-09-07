@@ -32,9 +32,9 @@ public:
     }
 };
 
-int main()
-{
-    Solution sol;
-    cout << sol.isValid("[]");
-    return 0;
-}
+// int main()
+// {
+//     Solution sol;
+//     cout << sol.isValid("[]");
+//     return 0;
+// }

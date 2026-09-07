@@ -10,6 +10,7 @@ add_executable(Practice)
 target_sources(Practice PRIVATE
     MaxConsecutiveOnes.cpp
     ValidParenthesis.cpp
+    DesignLinkedList.cpp
 )
 
 
