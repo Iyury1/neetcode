@@ -11,9 +11,5 @@ target_sources(Practice PRIVATE
     MaxConsecutiveOnes.cpp
     ValidParenthesis.cpp
     DesignLinkedList.cpp
+    ReverseLinkedList.cpp
 )
-
-
-
-
-

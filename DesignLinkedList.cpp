@@ -181,28 +181,28 @@ void check_output(vector<string> input_functions, vector<vector<int>> input_vals
     cout << "]" << endl;
 }
 
-int main()
-{
+// int main()
+//     {
 
-    vector<string> input_functions = {
-        "MyLinkedList", "addAtHead", "addAtTail", "addAtIndex", "get", "deleteAtIndex", "get"
-    };
-    vector<vector<int>> input_vals = {
-        {}, {1}, {3}, {1, 2}, {1}, {1}, {1}
-    };
+//     vector<string> input_functions = {
+//         "MyLinkedList", "addAtHead", "addAtTail", "addAtIndex", "get", "deleteAtIndex", "get"
+//     };
+//     vector<vector<int>> input_vals = {
+//         {}, {1}, {3}, {1, 2}, {1}, {1}, {1}
+//     };
 
-    check_output(input_functions, input_vals);
+//     check_output(input_functions, input_vals);
 
-    input_functions = {
-        "MyLinkedList","addAtHead","addAtHead","addAtHead","addAtIndex","deleteAtIndex","addAtHead","addAtTail","get","addAtHead","addAtIndex","addAtHead"
-    };
+//     input_functions = {
+//         "MyLinkedList","addAtHead","addAtHead","addAtHead","addAtIndex","deleteAtIndex","addAtHead","addAtTail","get","addAtHead","addAtIndex","addAtHead"
+//     };
     
-    input_vals = {
-        {}, {7}, {2}, {1}, {3, 0}, {2}, {6}, {4}, {4}, {4}, {5,0}, {6}
-    };
+//     input_vals = {
+//         {}, {7}, {2}, {1}, {3, 0}, {2}, {6}, {4}, {4}, {4}, {5,0}, {6}
+//     };
 
-    check_output(input_functions, input_vals);
+//     check_output(input_functions, input_vals);
 
 
-    return 0;
-}
+//     return 0;
+// }
