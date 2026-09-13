@@ -8,9 +8,10 @@ add_executable(Practice)
 
 
 target_sources(Practice PRIVATE
-    MaxConsecutiveOnes.cpp
-    ValidParenthesis.cpp
-    DesignLinkedList.cpp
-    ReverseLinkedList.cpp
-    MergeLinkedLists.cpp
+    "MaxConsecutiveOnes.cpp"
+    "Stack/ValidParenthesis.cpp"
+    "LinkedList/DesignLinkedList.cpp"
+    "LinkedList/ReverseLinkedList.cpp"
+    "LinkedList/MergeLinkedLists.cpp"
+    "LinkedList/BrowserHistory.cpp"
 )

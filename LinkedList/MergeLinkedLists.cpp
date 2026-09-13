@@ -127,28 +127,28 @@ public:
 };
 
 
-int main()
-{
-    std::vector<int> list1_val = {
-        1, 2, 4
-    };
-    std::vector<int> list2_val = {
-        1, 3, 5
-    };
+// int main()
+// {
+//     std::vector<int> list1_val = {
+//         1, 2, 4
+//     };
+//     std::vector<int> list2_val = {
+//         1, 3, 5
+//     };
 
-    ListNode * list1 = new ListNode(list1_val[0]);
-    for (int i = 1; i < list1_val.size(); ++i)
-    {
-        list1->next = new ListNode(list1_val[i]);
-    }
-    ListNode * list2 = new ListNode(list2_val[0]);
-    for (int i = 1; i < list2_val.size(); ++i)
-    {
-        list2->next = new ListNode(list2_val[i]);
-    }
+//     ListNode * list1 = new ListNode(list1_val[0]);
+//     for (int i = 1; i < list1_val.size(); ++i)
+//     {
+//         list1->next = new ListNode(list1_val[i]);
+//     }
+//     ListNode * list2 = new ListNode(list2_val[0]);
+//     for (int i = 1; i < list2_val.size(); ++i)
+//     {
+//         list2->next = new ListNode(list2_val[i]);
+//     }
 
-    Solution sol;
-    print_list_node(sol.mergeTwoLists(list1, list2));
+//     Solution sol;
+//     print_list_node(sol.mergeTwoLists(list1, list2));
 
-    return 0;
-}
+//     return 0;
+// }
