@@ -20,3 +20,10 @@ class Solution:
 
 
         return countStairs(n)
+
+class SolutionRecursive:
+    def climbStairs(self, n: int) -> int:
+        if n > 2:
+            return self.climbStairs(n-1) + self.climbStairs(n-2)
+        else:
+            return n
