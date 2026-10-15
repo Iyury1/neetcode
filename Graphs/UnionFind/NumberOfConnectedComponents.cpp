@@ -37,8 +37,6 @@ public:
     int countComponents(int n, vector<vector<int>>& edges) {
         int components = n;
 
-        vector<vector<int>> g(n);
-
         vector<int> parent(n);
         iota(parent.begin(), parent.end(), 0);
         vector<int> size(n, 1);
