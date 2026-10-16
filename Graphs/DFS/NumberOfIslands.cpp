@@ -1,4 +1,6 @@
 #include <vector>
+#include <utility>
+#include <stack>
 
 using namespace std;
 
@@ -38,3 +40,53 @@ public:
         return count;
     }
 };
+
+
+    class IterativeSolution {
+    public:
+
+        void dfs(int sr, int sc, int rows, int cols, vector<vector<char>>& grid)
+        {
+            stack<pair<int,int>> s;
+            grid[sr][sc] = '0';
+            s.push({sr,sc});
+
+            int dirs[4][2] = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+
+            while(!s.empty())
+            {
+                auto [r, c] = s.top();
+                s.pop();
+                for (auto [dr, dc] : dirs)
+                {
+                    int nr = r + dr, nc = c + dc;
+                    if (nr < 0 || nc < 0 || nr >= rows || nc >= cols || grid[nr][nc] == '0')
+                    {
+                        continue;
+                    }
+                    grid[nr][nc] = '0';
+                    s.push({nr,nc});
+                }
+            }
+
+        }
+
+
+        int numIslands(vector<vector<char>>& grid) {
+            if (grid.empty() || grid[0].empty()) return 0;
+            int rows = static_cast<int>(grid.size()), cols = static_cast<int>(grid[0].size());
+            int ret = 0;
+            for (int r = 0; r < rows; ++r)
+            {
+                for (int c = 0; c < cols; ++c)
+                {
+                    if (grid[r][c] == '1')
+                    {
+                        ret++;
+                        dfs(r, c, rows, cols, grid);
+                    }
+                }
+            }
+            return ret;
+        }
+    };
