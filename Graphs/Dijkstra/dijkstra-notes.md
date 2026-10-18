@@ -40,16 +40,24 @@ $$
 O\big((V + E)\log V\big)
 $$
 
-The heap can hold up to $$E$$ entries, but $$\log E \le \log V^2 = 2\log V$$, so this is the same bound.
+The heap can hold up to $E$ entries, but $\log E \le \log V^2 = 2\log V$, so this is the same bound.
+
+Where it comes from:
+
+- **Edge work:** each node is processed (passes the stale check) at most once, so its adjacency list is scanned once. Across all nodes that is $E$ relaxation checks in total.
+- **Pushes:** only a successful relaxation pushes, so there are at most $E + 1$ pushes (the `+1` is the source). Each push costs $O(\log V)$.
+- **Pops:** every entry is popped at most once, stale or not, so pops are bounded by pushes. Each pop also costs $O(\log V)$.
+- **Adding up:** $O(E)$ for scanning plus $O(E \log V)$ for heap operations, plus $O(V)$ to set up `dist`, gives $O((V + E)\log V)$.
+- The $V$ term only matters when there are fewer edges than nodes. In a connected graph $E \ge V - 1$, which is why the bound is often written as $O(E \log V)$, as in the table below.
 
 Other variants:
 
 | Version | Time | Best for |
 |---|---|---|
-| Binary heap / `priority_queue` | $$O(E \log V)$$ | Sparse graphs, most problems |
-| `std::set` (decrease-key) | $$O(E \log V)$$ | Bounding the queue at $$V$$ |
-| Array scan, no heap | $$O(V^2)$$ | Dense graphs, $$E \approx V^2$$ |
-| Fibonacci heap | $$O(E + V \log V)$$ | Theory, rarely used in practice |
+| Binary heap / `priority_queue` | $O(E \log V)$ | Sparse graphs, most problems |
+| `std::set` (decrease-key) | $O(E \log V)$ | Bounding the queue at $V$ |
+| Array scan, no heap | $O(V^2)$ | Dense graphs, $E \approx V^2$ |
+| Fibonacci heap | $O(E + V \log V)$ | Theory, rarely used in practice |
 
 ## Bounding the queue at V with `set`
 
@@ -75,13 +83,13 @@ while (!st.empty()) {
 }
 ```
 
-- Each node appears at most once, so the set never holds more than $$V$$ entries.
+- Each node appears at most once, so the set never holds more than $V$ entries.
 - No stale check is needed, since whatever is popped is always current.
-- It has the same $$O(E \log V)$$ bound, but in practice it is usually slower than `priority_queue`. A red-black tree allocates a node per insert, while a heap is a contiguous array.
+- It has the same $O(E \log V)$ bound, but in practice it is usually slower than `priority_queue`. A red-black tree allocates a node per insert, while a heap is a contiguous array.
 
 ## The dense-graph case
 
-When the graph is dense ($$E \approx V^2$$), the heap version costs $$O(V^2 \log V)$$. Dropping the heap and scanning for the closest unvisited node is faster:
+When the graph is dense ($E \approx V^2$), the heap version costs $O(V^2 \log V)$. Dropping the heap and scanning for the closest unvisited node is faster:
 
 ```cpp
 vector<long long> dist(n, LLONG_MAX);
@@ -101,7 +109,7 @@ for (int iter = 0; iter < n; iter++) {
 }
 ```
 
-The minimum scans cost $$V$$ rounds of $$V$$ each, and every edge is relaxed once in total:
+The minimum scans cost $V$ rounds of $V$ each, and every edge is relaxed once in total:
 
 $$
 O(V^2) + O(E) = O(V^2)
@@ -117,9 +125,9 @@ Typical signals are an adjacency-matrix input or a complete graph, such as "conn
 
 ## Negative edge weights
 
-**No version of Dijkstra handles negative edge weights**, including the $$O(V^2)$$ one. Dijkstra assumes a node's distance is final once it is popped or selected. A negative edge found later could still shorten that path.
+**No version of Dijkstra handles negative edge weights**, including the $O(V^2)$ one. Dijkstra assumes a node's distance is final once it is popped or selected. A negative edge found later could still shorten that path.
 
-Use **Bellman-Ford** instead. It relaxes every edge $$V - 1$$ times:
+Use **Bellman-Ford** instead. It relaxes every edge $V - 1$ times:
 
 $$
 O(VE)
